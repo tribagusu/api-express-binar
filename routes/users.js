@@ -13,9 +13,17 @@ router.get("/", (req, res) => {
 
 //# method post
 router.post("/", (req, res) => {
-  // console.log(req.body)
-  usersData.push({ id: uuidv4(), ...req.body })
+  dataBody = req.body
+  usersData.push({ id: uuidv4(), ...dataBody })
   res.send("berhasil")
+})
+
+//# method get params
+router.get("/:id", (req, res) => {
+  console.log(req.params)
+  const dataId = req.params
+  const user = usersData.find((item) => (item.id = dataId.id))
+  res.send(user)
 })
 
 module.exports = router
