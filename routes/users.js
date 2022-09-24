@@ -3,13 +3,7 @@ const express = require("express")
 // invoke
 const router = express.Router()
 
-const usersData = [
-  {
-    id: 1,
-    name: "muhsin",
-    address: "bogor",
-  },
-]
+const usersData = []
 
 //# method get
 router.get("/", (req, res) => {
@@ -20,6 +14,10 @@ router.get("/", (req, res) => {
 router.post("/", (req, res) => {
   console.log(req.body)
   res.send("berhasil")
+  usersData.push(req.body)
+  // if (usersData.length > 1) {
+  //   res.send("data berhasil ditambah")
+  // }
 })
 
 module.exports = router
