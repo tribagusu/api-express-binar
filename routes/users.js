@@ -1,5 +1,6 @@
 // import
 const express = require("express")
+const { v4: uuidv4 } = require("uuid")
 // invoke
 const router = express.Router()
 
@@ -12,12 +13,9 @@ router.get("/", (req, res) => {
 
 //# method post
 router.post("/", (req, res) => {
-  console.log(req.body)
+  // console.log(req.body)
+  usersData.push({ id: uuidv4(), ...req.body })
   res.send("berhasil")
-  usersData.push(req.body)
-  // if (usersData.length > 1) {
-  //   res.send("data berhasil ditambah")
-  // }
 })
 
 module.exports = router
